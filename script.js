@@ -1,14 +1,24 @@
 function change() {
-  temp = document.getElementById("tempSlider").value;
-  co2 = document.getElementById("co2Slider").value;
-  hum = document.getElementById("humSlider").value;
+  temp = Number(document.getElementById("tempSlider").value);
+  co2 = Number(document.getElementById("co2Slider").value);
+  hum = Number(document.getElementById("humSlider").value);
   updateUI();
 }
 function updateUI() {
+  document.getElementById("tempSlider").value = temp;
+  document.getElementById("co2Slider").value = co2;
+  document.getElementById("humSlider").value = hum;
   document.getElementById("tempDisplay").innerText = temp;
   document.getElementById("humDisplay").innerText = hum;
   document.getElementById("co2Display").innerText = co2;
   calc();
+}
+function shift() {
+  change();
+  temp = Math.min(50, Math.max(0, temp + (Math.random() - 0.5) * 30));
+  co2 = Math.min(100, Math.max(0, co2 + (Math.random() - 0.5) * 30));
+  hum = Math.min(100, Math.max(0, hum + (Math.random() - 0.5) * 30));
+  updateUI();
 }
 function calc() {
   var fl = new FuzzyLogic();
