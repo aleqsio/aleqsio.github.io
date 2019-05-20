@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+
+    <link
+      rel="stylesheet"
+      href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"
+    />
+    <style type="text/css">
+      html,
+      body {
+        margin: 20px;
+      }
+      code {
+        max-width: 80vw;
+        white-space: pre-wrap;
+      }
+      .bold {
+          font-weight: 700;
+      }
+    </style>
+
+    <script type="text/javascript" src="script.js"></script>
+    <script src="fuzzy.js"></script>
+  </head>
+
+  <body>
+    
+    <h3>
+      Prosty sterownik rozmyty pozwalający na sterowanie klimatyzacją w
+      zaleźności od:
+    </h3>
+    <div class="row">
+        <div class="column"><h6>Temperatury:</h6>
+        <input type="range" id="tempSlider" min="0" max="50" step="1" oninput="change()" />
+        <h6 id="tempDisplay"></h6>
+<code class="code">{
+name: "Temperatura",
+setsName: [
+"Niebezpiecznie niska",
+"Niekomfortowo niska",
+"Przeciętna",
+"Niekomfortowo wysoka",
+"Niebezpiecznie wysoka",
+],
+sets: [
+[0, 0, 10, 15],
+[10, 15, 15, 20],
+[15, 17, 19, 21],
+[19, 21, 25, 30],
+[30, 35, 50, 50],
+],
+}</code>
+    
+    </div>
+        <div class="column">
+<h6>Wilgotności powietrza:</h6>
+<input type="range" id="humSlider" min="0" max="100" step="1" oninput="change()" />
+<h6 id="humDisplay"></h6>
+<code>{
+name: "Wilgotoność powietrza",
+setsName: ["Niska", "Przeciętna", "Wysoka"],
+sets: [[0, 0, 10, 20], [20, 30, 40, 60], [50, 70, 100, 100]],
+}</code>
+
+        </div>
+        <div class="column">
+
+            <h6>Stęzenia dwutlenku węgla:</h6>
+            <input type="range" id="co2Slider" min="0" max="100" step="1" value="0" oninput="change()" />
+            <h6 id="co2Display"></h6>
+<code>{
+name: "Stęzenie dwutlenku węgla",
+setsName: ["Bezpieczne", "Wymagające wentylacji", "Niebezpieczne"],
+sets: [[0, 0, 0, 10], [5, 10, 100, 100], [40, 50, 100, 100]],
+}</code>
+        </div>
+        <div class="column"><section>Uzywamy metody Combsa w celu uniknięcia przyrostu wykładniczego inferencji z liczby reguł (powinno być
+            5*3*2=30). <br />Niestety, powoduje to zdecydowanie nieoptymalne działanie sterownika (np. mimo klasyfikacji zbioru
+            niebezpiecznego co2 jako maksymalnej mocy wywiewu, osiąga ona jedynie 64%</section>
+        <h5>Zalecana moc klimatyzacji:</h5>
+        <h6 id="result" class="bold"></h6>
+<code>variable_output: {
+name: "Moc klimatyzacji (%)",
+setsName: ["Wyłączona", "Niska", "Średnia", "Wysoka", "Maksymalna"],
+sets: [
+[0, 0, 0, 5],
+[0, 25, 26, 30],
+[30, 40, 41, 50],
+[50, 70, 80, 90],
+[97, 98, 99, 100],
+],
+},
+inferences: [[0, 0, 1, 2, 3], [1, 2, 3], [1, 3, 4]]</code><a href="https://en.wikipedia.org/wiki/Combs_method">(to jest tabela Combsa)</a>
+</div>
+    
+    
+   
+   
+   
+  </body>
+</html>
