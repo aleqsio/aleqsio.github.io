@@ -59,8 +59,14 @@ sets: [
 [19, 21, 25, 30],
 [30, 35, 50, 50],
 ],
-}</code>
-    
+}</code><br/>
+    <svg height="100" width="300" viewBox="0 0 500 100">
+        <path d="M0 100 L0 0 L100 0 L150 100 Z" fill="#ff0000ad" />
+        <path d="M100 100 L150 0 L150 0 L200 100 Z" fill="#ffa500ad" />
+        <path d="M150 100 L170 0 L190 0 L210 100 Z" fill="#00ff00ad" />
+        <path d="M190 100 L210 0 L250 0 L300 100 Z" fill="#ffa500ad" />
+        <path d="M300 100 L350 0 L500 0 L500 100 Z" fill="#ff0000ad" />
+    </svg>
     </div>
         <div class="column">
 <h6>Wilgotności powietrza:</h6>
@@ -71,7 +77,13 @@ name: "Wilgotoność powietrza",
 setsName: ["Niska", "Przeciętna", "Wysoka"],
 sets: [[0, 0, 10, 20], [20, 30, 40, 60], [50, 70, 100, 100]],
 }</code>
-
+<br />
+<svg height="100" width="300" viewBox="0 0 1000 200">
+    <path d="M0 200 L0 0 L100 0 L200 200 Z" fill="#ffa500ad" />
+    <path d="M200 200 L300 0 L400 0 L600 200 Z" fill="#00ff00ad" />
+    <path d="M500 200 L700 0 L1000 0 L1000 200 Z" fill="#0000ffad" />
+    
+</svg>
         </div>
         <div class="column">
 
@@ -83,6 +95,13 @@ name: "Stęzenie dwutlenku węgla",
 setsName: ["Bezpieczne", "Wymagające wentylacji", "Niebezpieczne"],
 sets: [[0, 0, 0, 10], [5, 10, 100, 100], [40, 50, 100, 100]],
 }</code>
+<br />
+<svg height="100" width="300" viewBox="0 0 1000 200">
+    <path d="M0 200 L0 0 L000 0 L100 200 Z" fill="#00ff00ad" />
+    <path d="M50 200 L100 0 L1000 0 L1000 200 Z" fill="#ff0000ad" />
+    <path d="M400 200 L500 0 L1000 0 L1000 200 Z" fill="#000000ad" />
+    
+</svg>
         </div>
         <div class="column"><section>Uzywamy metody Combsa w celu uniknięcia przyrostu wykładniczego inferencji z liczby reguł (powinno być
             5*3*2=30). <br />Niestety, powoduje to zdecydowanie nieoptymalne działanie sterownika (np. mimo klasyfikacji zbioru
